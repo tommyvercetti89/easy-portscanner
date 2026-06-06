@@ -14,12 +14,12 @@ for port in range(sayi_port,sayi_port2 + 1):
         s = sc.socket(sc.AF_INET,sc.SOCK_STREAM)
         s.settimeout(1)
         cikti = s.connect_ex((girdi_ip,port))
-
+            
         if cikti == 0:
             print(f"Buldumm port {port} AÇIK!")
         else:
             print(f"Bu {port} nolu port KAPALI!")
-
+        s.close()
     except Exception as e:
          print(f"Hata :", e)
 
