@@ -3,4 +3,9 @@ Eğer çıktının değişmesini istiyorsak kod bloğunu manuel düzenlemek gere
 
 Good Scanner kullanıcıdan IP Adresi ve Port aralıklarını kendisi alarak tarama yapar. 
 Girilen port aralığının büyüklüğüne bağlı olarak taramanın süresi uzayabilir. 
-Her port için varsayılan bekleme süresi 1 saniyedir. Kod bloğunda düzenleme yapılarak bekleme süresi değişebilir. 
+Her port için varsayılan cevap bekleme süresi 1 saniyedir. Kod bloğunda düzenleme yapılarak bekleme süresi değişebilir. 
+
+Best Scanner gelişmiş güvenlik duvarlarından kaçarak yakalanmadan tarama yapmayı sağlar.
+Best Scanner ile yapılan taramalar daha yavaş olsa da daha güvenlidir.
+Best Scanner sadece açık portları bulmaz, Banner Grabbing yaparak açık portun arkasında çalışan teknolojyi de kullanıcının ekranına getirir.
+Siber güvenlikte kritiktir.
