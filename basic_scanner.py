@@ -1,5 +1,4 @@
 import socket as sc
-import  sys
 
 #IP Adresi ve taranacak portlar
 IP_ADDR = "192.168.1.1"
