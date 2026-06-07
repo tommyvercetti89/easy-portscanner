@@ -7,5 +7,5 @@ Her port için varsayılan cevap bekleme süresi 1 saniyedir. Kod bloğunda düz
 
 Best Scanner gelişmiş güvenlik duvarlarından kaçarak yakalanmadan tarama yapmayı sağlar.
 Best Scanner ile yapılan taramalar daha yavaş olsa da daha güvenlidir.
-Best Scanner sadece açık portları bulmaz, Banner Grabbing yaparak açık portun arkasında çalışan teknolojyi de kullanıcının ekranına getirir.
+Best Scanner sadece açık portları bulmaz, Banner Grabbing yaparak açık portun arkasında çalışan teknolojiyi de kullanıcının ekranına getirir.
 Siber güvenlikte kritiktir.
