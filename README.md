@@ -9,3 +9,8 @@ Best Scanner gelişmiş güvenlik duvarlarından kaçarak yakalanmadan tarama ya
 Best Scanner ile yapılan taramalar daha yavaş olsa da daha güvenlidir.
 Best Scanner sadece açık portları bulmaz, Banner Grabbing yaparak açık portun arkasında çalışan teknolojiyi de kullanıcının ekranına getirir.
 Siber güvenlikte kritiktir.
+
+Tarar.py çok amaçlı bir tarama aracıdır.
+Tarar.py içerisinde yukarıda bahsedilen tüm tarama yöntemleri entegre edilmiştir.
+Kullanıcı tarar.py'yi çalıştırırken kendi ihtiyacına göre hangi tarama metodunu kullanacağını seçebilir.
+Tarar.py ile farklı tarama stratejilerini kolayca test edebilir ve karşılaştırabilirsiniz.
