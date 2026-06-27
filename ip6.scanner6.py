@@ -2,7 +2,7 @@ import socket as s
 import requests as req
 
 print("*"*50)
-print("Port tarayıcı")
+print("Port Scanner")
 print("*"*50)
 
 ipa = input("IP ADDRESS: ")
