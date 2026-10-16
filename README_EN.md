@@ -10,7 +10,7 @@ Although scans performed with Best Scanner are slower, they are more secure.
 Best Scanner not only finds open ports but also performs Banner Grabbing to reveal the technology running behind the open port to the user's screen.
 This is critical in cybersecurity.
 
-Tarar.py is a multi-purpose scanning tool.
+tarar.py is a multi-purpose scanning tool.
 All scanning methods mentioned above are integrated into Tarar.py.
 When running tarar.py, the user can choose which scanning method to use according to their needs.
 With Tarar.py, you can easily test and compare different scanning strategies.
