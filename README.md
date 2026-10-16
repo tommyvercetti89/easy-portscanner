@@ -55,7 +55,7 @@ Belirlenen kelimeleri 2005 ile 2025 arasındaki yıllarla ve bazı sembollerle b
 Bu dosyada kendi bilgisayarımda kullandığım bir dosya yolu olduğu için farklı bir bilgisayarda çalıştırmadan önce şu satırı değiştirmek gerekir:
 
 ```python
-with open(r"C:\Users\TOSHIBA\Desktop\list.txt", "w", encoding="utf-8") as dosya:
+with open(r"C:\Users\USERNAME\Desktop\list.txt", "w", encoding="utf-8") as dosya:
 ```
 
 Daha taşınabilir olması için ileride dosya yolunu kullanıcıdan almayı veya projenin bulunduğu klasöre kayıt yapmayı planlıyorum.
