@@ -1,120 +1,108 @@
 # Easy Port Scanner
 
-Basit seviyede Python ile yazılmış port tarayıcı örnekleri. Bu depo, farklı yaklaşımlarla yazılmış TCP port tarama scriptlerini içerir.
+Bu repo, Python öğrenirken geliştirdiğim basit siber güvenlik araçlarını içeriyor. Şu anki örneklerde port tarama, banner bilgisi alma ve kelime listesi oluşturma gibi konuları deniyorum.
 
-> ⚠️ **Yasal uyarı:** Bu araçları yalnızca sahibi olduğunuz veya açık izne sahip olduğunuz sistemlerde kullanın.
+Bu projeyi hazırlarken özellikle Python'da `socket`, listeler, döngüler, fonksiyonlar ve komut satırı argümanlarını öğrenmeye çalışıyorum.
 
-## Repo Özeti
+## Yasal ve etik kullanım
 
-Bu depoda 3 adet temel tarayıcı scripti bulunuyor:
+Bu araçları sadece sahibi olduğum veya açıkça izin aldığım sistemlerde kullanıyorum. İzinsiz port taraması yapmak veya oluşturulan listeleri başkalarının hesaplarında denemek yasal ve etik değildir.
 
-- `good_scanner.py` → IPv4 için başlangıç seviyesi port tarayıcı
-- `best-scanner.py` → Daha görsel çıktı ve banner denemesi yapan IPv4 tarayıcı
-- `ip6.scanner6.py` → IPv6 hedefleri için tarayıcı + port 80 için HTTP header denemesi
+## Dosyalar
 
-Dil dağılımı: **%100 Python**
+### `ag.py`
 
-## Dosya Analizi
+Komut satırından verilen IP adresi ve port aralığını tarar. Örneğin `22-80` aralığı verildiğinde bu aralıktaki TCP portlarını kontrol eder.
 
-### 1) `good_scanner.py`
+Kullanım:
 
-- `socket.AF_INET` + `SOCK_STREAM` ile TCP bağlantı kontrolü yapar.
-- Kullanıcıdan IP, başlangıç portu, bitiş portu alır.
-- `connect_ex` sonucu `0` ise portu açık kabul eder.
-- Her port için açık/kapalı bilgisi yazdırır.
+```bash
+python ag.py 192.168.1.1 22-80
+```
 
-**Artıları:**
-- Basit ve öğrenmesi kolay
-- Yeni başlayanlar için anlaşılır akış
+Bu dosyada `socket.connect_ex()` kullanılıyor. Sonuç `0` olduğunda portun açık olduğunu yazdırıyor. Şimdilik sadece açık portları gösteriyor.
 
-**Eksileri / İyileştirme alanları:**
-- Domain çözümleme, input doğrulama ve hata yönetimi sınırlı
-- Tüm portlarda çıktı üretmek çok uzun olabilir
+### `tarar.py`
 
----
+Kodun içinde belirlenmiş olan bir IP adresindeki bazı portları kontrol eder. Örnek olarak SSH, DNS, HTTP ve HTTPS gibi yaygın portlar listede bulunuyor.
 
-### 2) `best-scanner.py`
+Açık bir port bulursa banner bilgisi almaya çalışıyor. Her servis banner bilgisi göndermediği için bu bölüm her zaman sonuç vermeyebilir.
 
-- `good_scanner.py` üzerine daha zengin çıktı ekler.
-- Açık portlarda `recv(1024)` ile banner okumayı dener.
-- Her port denemesi arasında rastgele bekleme (`time.sleep(random.randint(1,4))`) uygular.
+Çalıştırmak için:
 
-**Artıları:**
-- Banner alma denemesi ile servis hakkında ek bilgi sağlar
-- Daha okunabilir çıktı formatı
+```bash
+python tarar.py
+```
 
-**Dikkat edilmesi gerekenler:**
-- Banner her zaman gelmez; `recv` bloklayabilir veya boş dönebilir
-- Rastgele bekleme taramayı ciddi yavaşlatır
+Dosyanın içindeki `ipa` değişkenini kendi test ortamımdaki IP adresine göre değiştirmem gerekiyor.
 
----
+### `generator.py`
 
-### 3) `ip6.scanner6.py`
+`admin`, `login` ve `panel` gibi kelimelerden farklı kelime kombinasyonları üretir. Yılları kelimelerin başına veya sonuna ekler ve bazı sonuçların sonuna `!` sembolü koyar.
 
-- `socket.AF_INET6` ile IPv6 TCP taraması yapar.
-- Açık portta banner denemesi yapar.
-- Port `80` açıksa `requests` ile HTTP isteği atıp header bilgilerini yazdırmayı dener.
-- IPv6 URL formatı için köşeli parantez kullanımı (`http://[ipv6]`) düşünülmüş.
+Bu dosyayı listeler ve `for` döngülerini daha iyi anlamak için yazdım.
 
-**Artıları:**
-- IPv6 desteği eklenmiş
-- Sadece socket değil HTTP seviyesinde de ek kontrol yapıyor
+Çalıştırmak için:
 
-**Dikkat edilmesi gerekenler:**
-- `requests` bağımlılığı gerekir (`pip install requests`)
-- Port 443 için HTTPS kontrolü bulunmuyor
+```bash
+python generator.py
+```
+
+### `username-generator.py`
+
+Belirlenen kelimeleri 2005 ile 2025 arasındaki yıllarla ve bazı sembollerle birleştirir. Oluşturulan listeyi Windows masaüstündeki `list.txt` dosyasına yazmaya çalışır.
+
+Bu dosyada kendi bilgisayarımda kullandığım bir dosya yolu olduğu için farklı bir bilgisayarda çalıştırmadan önce şu satırı değiştirmek gerekir:
+
+```python
+with open(r"C:\Users\TOSHIBA\Desktop\list.txt", "w", encoding="utf-8") as dosya:
+```
+
+Daha taşınabilir olması için ileride dosya yolunu kullanıcıdan almayı veya projenin bulunduğu klasöre kayıt yapmayı planlıyorum.
 
 ## Kurulum
 
-### Gereksinimler
+Python 3 kurulu olması yeterli. Harici bir paket kullanmıyorum.
 
-- Python 3.8+
-- (Opsiyonel ama `ip6.scanner6.py` için gerekli) `requests`
-
-```bash
-pip install requests
-```
-
-## Kullanım
-
-### `good_scanner.py`
+Projeyi indirdikten sonra dosyaları doğrudan çalıştırabilirim:
 
 ```bash
-python good_scanner.py
+python ag.py 127.0.0.1 1-1024
+python tarar.py
+python generator.py
+python username-generator.py
 ```
 
-### `best-scanner.py`
+Windows'ta `python` komutu çalışmazsa `py` komutunu denemek gerekebilir.
 
-```bash
-python best-scanner.py
-```
+## Şu an öğrendiklerim
 
-### `ip6.scanner6.py`
+Bu projeyi geliştirirken şu konularda pratik yapıyorum:
 
-```bash
-python ip6.scanner6.py
-```
+- Python listeleri
+- `for` döngüleri
+- Fonksiyon oluşturma
+- `try` ve `except` ile hata yakalama
+- `socket` modülü ile TCP bağlantısı deneme
+- `sys.argv` ile komut satırı girdisi alma
+- Dosyaya veri yazma
+- Basit banner bilgisi alma denemeleri
 
-Script çalışınca senden hedef adres ve port aralığını ister.
+## Eksikler ve geliştirme fikirleri
 
-## Önemli Notlar
+Bu proje başlangıç seviyesinde olduğu için bazı eksikleri var. İleride şunları eklemek istiyorum:
 
-- Çok geniş port aralığı (örn. `1-65535`) uzun sürebilir.
-- Düşük timeout daha hızlı fakat hatalı negatif sonuçlara neden olabilir.
-- Banner bilgisi her serviste dönmez.
-- Güvenlik araçlarını etik ve yasal sınırlar içinde kullan.
+- IP adresi ve port aralığı için daha iyi giriş kontrolü
+- Geçersiz komut satırı girdileri için açıklayıcı hata mesajları
+- Domain adı ile tarama yapabilme
+- Açık portların yanında servis adlarını gösterme
+- Daha düzenli çıktı formatı
+- Sonuçları TXT, JSON veya CSV dosyasına kaydetme
+- Threading veya async kullanarak taramayı hızlandırma
+- IPv6 desteği
+- Banner alma işleminde timeout kontrolünü iyileştirme
+- Test amacıyla ayrı bir yerel ağ ve sanal makine ortamı kullanma
 
-## Geliştirme Önerileri
+## Not
 
-İstersen bir sonraki adımda şu iyileştirmeler eklenebilir:
-
-1. **CLI argümanları** (`argparse`) ile interaktif input’u azaltmak
-2. **Threading/async** ile daha hızlı tarama
-3. **Servis adı çözümleme** (`socket.getservbyport`) ve daha temiz rapor
-4. **JSON/CSV çıktı**
-5. **IPv4 + IPv6 birleşik tek script**
-6. **HTTPS (443) için SSL/TLS banner veya sertifika bilgisi**
-
----
-
-Geri bildirim verirsen README’yi Türkçe + İngilizce çift dilli versiyona da çevirebilirim.
+Bu repo profesyonel bir port tarayıcı değildir. Python ve temel ağ programlama konularını öğrenmek için hazırladığım küçük örneklerden oluşuyor. Kodları geliştirirken güvenli, kontrollü ve izinli test ortamları kullanmaya dikkat ediyorum.
