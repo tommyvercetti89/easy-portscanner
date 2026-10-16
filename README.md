@@ -105,4 +105,4 @@ Bu proje başlangıç seviyesinde olduğu için bazı eksikleri var. İleride ş
 
 ## Not
 
-Bu repo profesyonel bir port tarayıcı değildir. Python ve temel ağ programlama konularını öğrenmek için hazırladığım küçük örneklerden oluşuyor. Kodları geliştirirken güvenli, kontrollü ve izinli test ortamları kullanmaya dikkat ediyorum.
+Bu repo profesyonel bir port tarayıcı veya script deposu değildir. Python ve temel ağ programlama konularını öğrenmek için hazırladığım küçük örneklerden oluşuyor. Kodları geliştirirken güvenli, kontrollü ve izinli test ortamları kullanmaya dikkat ediyorum.
