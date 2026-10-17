@@ -14,7 +14,7 @@ for kelime in kelimeler:
             liste.append(f"{yil}{kelime}{sembol}")
 
 
-with open(r"C:\Users\USERNAME\Desktop\list.txt", "w",encoding="utf-8") as dosya:
+with open(r"C:\Users\USERNAME\Desktop\username_generator_list.txt", "w",encoding="utf-8") as dosya:
     dosya.write("\n".join(liste)+ "\n")
     
 for i,b in enumerate(liste):
