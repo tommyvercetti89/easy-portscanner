@@ -22,4 +22,5 @@ while True:
           
     except ValueError as hata:
         print("Bir sayı gir basamaklar harf olamaz!")
+        continue
         
