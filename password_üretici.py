@@ -16,7 +16,7 @@ while True:
             continue
          
         for i in range(girdi):
-            sifre += secret.choice(havuz)
+            sifre += secrets.choice(havuz)
         print(sifre) 
           
     except ValueError as hata:
