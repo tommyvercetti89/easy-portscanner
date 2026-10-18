@@ -13,13 +13,26 @@ while True:
             break
             
         if adet < 0:
-            print("SAYI 0'DAN KÜÇÜK OLAMAZ!")
+            print("Sayı 0'dan küçük olamaz!")
             continue
             
+        ip_list = []
+        
         for _ in range(adet):
-            ip = ".".join(str(random.randint(0,255))for _ in range(4))
+            ip = ".".join(str(random.randint(0,255)) for _ in range(4))
+            ip_list.append(ip)
             print(ip)
-    
+            
+        girdi = input("BİR .TXT DOSYASINA KAYDET?[E,H]: ")
+        
+        if girdi.lower() == "e":
+            with open("list.txt","a") as file:
+               for ip in ip_list:
+                   file.write(str(ip) + "\n")
+                   
+        if girdi.lower() == "h":
+            continue
+            
     except ValueError as e:
-        print("HATA!!!",e)
+        print("HATA!!! --> ",e)
                
