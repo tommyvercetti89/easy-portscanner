@@ -11,7 +11,11 @@ while True:
         if adet == 0:
             print("ÇIKILIYOR...")
             break
-    
+            
+        if adet < 0:
+            print("SAYI 0'DAN KÜÇÜK OLAMAZ!")
+            continue
+            
         for _ in range(adet):
             ip = ".".join(str(random.randint(0,255))for _ in range(4))
             print(ip)
