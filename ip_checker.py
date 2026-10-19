@@ -39,8 +39,8 @@ if kopya:
            
     if girdi.lower() =="h":
         print("SCRİPT SONA ERDİ!") 
-        input("ÇIKMAK İÇİN ENTER: ")   
+          
 else:
     print("DOSYA TEMİZ, TEKRAR YOK!")     
     
-    
+input("ÇIKMAK İÇİN ENTER")    
